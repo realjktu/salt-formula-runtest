@@ -1,0 +1,56 @@
+<domain type='{{ node.engine|default('qemu') }}'>
+  <name>{{ node.name }}</name>
+  <memory unit='KiB'>{{ node.properties.memory_mb * 1024 }}</memory>
+  <vcpu placement='static'>{{ node.properties.cpus }}</vcpu>
+  <os>
+    <type arch='{{ node.properties.cpu_arch|default('x86_64') }}' machine='pc-1.0'>hvm</type>
+    <boot dev='network'/>
+    <bootmenu enable='no'/>
+    <bios useserial='yes'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <pae/>
+  </features>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <devices>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='{{ node.disk_format|default("qcow2") }}' cache='writeback'/>
+      <source file='{{ '/var/lib/libvirt/images/' + node.name + '.' + node.disk_format|default("qcow2") }}'/>
+          <target dev='vda' bus='virtio'/>
+          <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
+    </disk>
+    <controller type='ide' index='0'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x1'/>
+    </controller>
+    {%- for port in node.ports %}
+    <interface type='ethernet'>
+      <mac address='{{ port.address }}'/>
+      <target dev='{{ 'tap-' + node.name + 'i' + loop.index|string }}'/>
+      <model type='virtio'/>
+      <script path='no'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='{{ '0x0' + loop.index|string }}'  function='0x0'/>
+    </interface>
+    {%- endfor %}
+    <serial type='file'>
+      <source path="{{ '/var/log/ironic-bm-logs/' + node.name + '_console.log' }}"/>
+      <target port='0'/>
+    </serial>
+    <serial type='pty'>
+      <target port='1'/>
+    </serial>
+    <input type='mouse' bus='ps2'/>
+    <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
+    <video>
+      <model type='cirrus' vram='9216' heads='1'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
+    </video>
+    <memballoon model='virtio'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
+    </memballoon>
+  </devices>
+</domain>
