@@ -11,7 +11,7 @@ from tester import tempest_sections
 
 log = logging.getLogger(__name__)
 
-__virtualname__ = 'tester'
+__virtualname__ = 'runtest'
 
 
 def __virtual__():
