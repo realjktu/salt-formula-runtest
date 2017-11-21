@@ -8,8 +8,7 @@ class Debug(base_section.BaseSection):
         'trace_requests',
     ]
 
-    
+
     @property
     def trace_requests(self):
         pass
-    

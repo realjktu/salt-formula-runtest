@@ -10,16 +10,15 @@ class ImageFeatureEnabled(base_section.BaseSection):
         'deactivate_image',
     ]
 
-    
+
     @property
     def api_v1(self):
         pass
-    
+
     @property
     def api_v2(self):
         pass
-    
+
     @property
     def deactivate_image(self):
         pass
-    

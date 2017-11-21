@@ -9,12 +9,11 @@ class ServiceClients(base_section.BaseSection):
         'proxy_url',
     ]
 
-    
+
     @property
     def http_timeout(self):
         pass
-    
+
     @property
     def proxy_url(self):
         pass
-    

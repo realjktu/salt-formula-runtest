@@ -15,7 +15,7 @@ class ServiceAvailable(base_section.BaseSection):
     ]
 
 
-    
+
     def _is_service_enabled(self, service):
         """Check if service is enabled in specific environment.
 
@@ -34,32 +34,32 @@ class ServiceAvailable(base_section.BaseSection):
                     if p_api.get('enabled'):
                         return True
         return False
-    
+
     @property
     def cinder(self):
         pass
-    
+
     @property
     def designate(self):
         return self._is_service_enabled('designate')
-    
+
     @property
     def glance(self):
         return self._is_service_enabled('glance')
-    
+
     @property
     def heat(self):
         return self._is_service_enabled('heat')
-    
+
     @property
     def neutron(self):
         return self._is_service_enabled('neutron')
-    
+
     @property
     def nova(self):
         return self._is_service_enabled('nova')
-    
+
     @property
     def swift(self):
         return self._is_service_enabled('swift')
-    
+

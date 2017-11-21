@@ -24,72 +24,71 @@ class Compute(base_section.BaseSection):
         'volume_device_name',
     ]
 
-    
+
     @property
     def build_interval(self):
         pass
-    
+
     @property
     def build_timeout(self):
         pass
-    
+
     @property
     def catalog_type(self):
         pass
-    
+
     @property
     def endpoint_type(self):
         pass
-    
+
     @property
     def fixed_network_name(self):
         pass
-    
+
     @property
     def flavor_ref(self):
         pass
-    
+
     @property
     def flavor_ref_alt(self):
         pass
-    
+
     @property
     def hypervisor_type(self):
         pass
-    
+
     @property
     def image_ref(self):
         pass
-    
+
     @property
     def image_ref_alt(self):
         pass
-    
+
     @property
     def max_microversion(self):
         pass
-    
+
     @property
     def min_compute_nodes(self):
         pass
-    
+
     @property
     def min_microversion(self):
         pass
-    
+
     @property
     def ready_wait(self):
         pass
-    
+
     @property
     def region(self):
         pass
-    
+
     @property
     def shelved_offload_time(self):
         pass
-    
+
     @property
     def volume_device_name(self):
         pass
-    

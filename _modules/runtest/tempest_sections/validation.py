@@ -23,68 +23,67 @@ class Validation(base_section.BaseSection):
         'ssh_timeout',
     ]
 
-    
+
     @property
     def auth_method(self):
         pass
-    
+
     @property
     def connect_method(self):
         pass
-    
+
     @property
     def connect_timeout(self):
         pass
-    
+
     @property
     def floating_ip_range(self):
         pass
-    
+
     @property
     def image_ssh_password(self):
         pass
-    
+
     @property
     def image_ssh_user(self):
         pass
-    
+
     @property
     def ip_version_for_ssh(self):
         pass
-    
+
     @property
     def network_for_ssh(self):
         pass
-    
+
     @property
     def ping_count(self):
         pass
-    
+
     @property
     def ping_size(self):
         pass
-    
+
     @property
     def ping_timeout(self):
         pass
-    
+
     @property
     def run_validation(self):
         pass
-    
+
     @property
     def security_group(self):
         pass
-    
+
     @property
     def security_group_rules(self):
         pass
-    
+
     @property
     def ssh_shell_prologue(self):
         pass
-    
+
     @property
     def ssh_timeout(self):
         pass
-    

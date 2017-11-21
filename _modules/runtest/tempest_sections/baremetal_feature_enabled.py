@@ -8,8 +8,7 @@ class BaremetalFeatureEnabled(base_section.BaseSection):
         'ipxe_enabled',
     ]
 
-    
+
     @property
     def ipxe_enabled(self):
         pass
-    

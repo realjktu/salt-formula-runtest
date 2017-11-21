@@ -9,12 +9,11 @@ class OsloConcurrency(base_section.BaseSection):
         'lock_path',
     ]
 
-    
+
     @property
     def disable_process_locking(self):
         pass
-    
+
     @property
     def lock_path(self):
         pass
-    

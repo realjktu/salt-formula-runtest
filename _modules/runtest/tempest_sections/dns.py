@@ -14,32 +14,31 @@ class Dns(base_section.BaseSection):
         'query_timeout',
     ]
 
-    
+
     @property
     def build_interval(self):
         pass
-    
+
     @property
     def build_timeout(self):
         pass
-    
+
     @property
     def catalog_type(self):
         pass
-    
+
     @property
     def endpoint_type(self):
         pass
-    
+
     @property
     def min_ttl(self):
         pass
-    
+
     @property
     def nameservers(self):
         pass
-    
+
     @property
     def query_timeout(self):
         pass
-    

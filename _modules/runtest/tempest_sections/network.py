@@ -24,72 +24,71 @@ class Network(base_section.BaseSection):
         'shared_physical_network',
     ]
 
-    
+
     @property
     def build_interval(self):
         pass
-    
+
     @property
     def build_timeout(self):
         pass
-    
+
     @property
     def catalog_type(self):
         pass
-    
+
     @property
     def default_network(self):
         pass
-    
+
     @property
     def dns_servers(self):
         pass
-    
+
     @property
     def endpoint_type(self):
         pass
-    
+
     @property
     def floating_network_name(self):
         pass
-    
+
     @property
     def port_vnic_type(self):
         pass
-    
+
     @property
     def project_network_cidr(self):
         pass
-    
+
     @property
     def project_network_mask_bits(self):
         pass
-    
+
     @property
     def project_network_v6_cidr(self):
         pass
-    
+
     @property
     def project_network_v6_mask_bits(self):
         pass
-    
+
     @property
     def project_networks_reachable(self):
         pass
-    
+
     @property
     def public_network_id(self):
         pass
-    
+
     @property
     def public_router_id(self):
         pass
-    
+
     @property
     def region(self):
         pass
-    
+
     @property
     def shared_physical_network(self):
         pass
-    

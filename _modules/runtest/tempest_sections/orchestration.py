@@ -17,44 +17,43 @@ class Orchestration(base_section.BaseSection):
         'stack_owner_role',
     ]
 
-    
+
     @property
     def build_interval(self):
         pass
-    
+
     @property
     def build_timeout(self):
         pass
-    
+
     @property
     def catalog_type(self):
         pass
-    
+
     @property
     def endpoint_type(self):
         pass
-    
+
     @property
     def instance_type(self):
         pass
-    
+
     @property
     def keypair_name(self):
         pass
-    
+
     @property
     def max_resources_per_stack(self):
         pass
-    
+
     @property
     def max_template_size(self):
         pass
-    
+
     @property
     def region(self):
         pass
-    
+
     @property
     def stack_owner_role(self):
         pass
-    

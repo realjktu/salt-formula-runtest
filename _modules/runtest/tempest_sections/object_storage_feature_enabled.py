@@ -11,20 +11,19 @@ class ObjectStorageFeatureEnabled(base_section.BaseSection):
         'object_versioning',
     ]
 
-    
+
     @property
     def container_sync(self):
         pass
-    
+
     @property
     def discoverability(self):
         pass
-    
+
     @property
     def discoverable_apis(self):
         pass
-    
+
     @property
     def object_versioning(self):
         pass
-    

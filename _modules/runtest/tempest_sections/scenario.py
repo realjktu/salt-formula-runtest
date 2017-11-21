@@ -16,40 +16,39 @@ class Scenario(base_section.BaseSection):
         'img_properties',
     ]
 
-    
+
     @property
     def aki_img_file(self):
         pass
-    
+
     @property
     def ami_img_file(self):
         pass
-    
+
     @property
     def ari_img_file(self):
         pass
-    
+
     @property
     def dhcp_client(self):
         pass
-    
+
     @property
     def img_container_format(self):
         pass
-    
+
     @property
     def img_dir(self):
         pass
-    
+
     @property
     def img_disk_format(self):
         pass
-    
+
     @property
     def img_file(self):
         pass
-    
+
     @property
     def img_properties(self):
         pass
-    

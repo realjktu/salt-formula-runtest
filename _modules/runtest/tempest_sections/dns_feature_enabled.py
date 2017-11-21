@@ -14,32 +14,31 @@ class DnsFeatureEnabled(base_section.BaseSection):
         'bug_1573141_fixed',
     ]
 
-    
+
     @property
     def api_admin(self):
         pass
-    
+
     @property
     def api_v1(self):
         pass
-    
+
     @property
     def api_v1_servers(self):
         pass
-    
+
     @property
     def api_v2(self):
         pass
-    
+
     @property
     def api_v2_quotas(self):
         pass
-    
+
     @property
     def api_v2_root_recordsets(self):
         pass
-    
+
     @property
     def bug_1573141_fixed(self):
         pass
-    

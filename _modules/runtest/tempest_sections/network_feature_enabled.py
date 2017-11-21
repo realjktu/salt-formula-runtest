@@ -13,28 +13,27 @@ class NetworkFeatureEnabled(base_section.BaseSection):
         'port_security',
     ]
 
-    
+
     @property
     def api_extensions(self):
         pass
-    
+
     @property
     def floating_ips(self):
         pass
-    
+
     @property
     def ipv6(self):
         pass
-    
+
     @property
     def ipv6_subnet_attributes(self):
         pass
-    
+
     @property
     def port_admin_state_change(self):
         pass
-    
+
     @property
     def port_security(self):
         pass
-    

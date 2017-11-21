@@ -15,36 +15,35 @@ class IdentityFeatureEnabled(base_section.BaseSection):
         'trust',
     ]
 
-    
+
     @property
     def api_extensions(self):
         pass
-    
+
     @property
     def api_v2(self):
         pass
-    
+
     @property
     def api_v2_admin(self):
         pass
-    
+
     @property
     def api_v3(self):
         pass
-    
+
     @property
     def domain_specific_drivers(self):
         pass
-    
+
     @property
     def forbid_global_implied_dsr(self):
         pass
-    
+
     @property
     def security_compliance(self):
         pass
-    
+
     @property
     def trust(self):
         pass
-    
