@@ -1,6 +1,8 @@
 
 import base_section
 
+from runtest import conditions
+
 class Network(base_section.BaseSection):
 
     name = "network"
@@ -79,7 +81,19 @@ class Network(base_section.BaseSection):
 
     @property
     def public_network_id(self):
-        pass
+        c = conditions.BaseRule(field='keystone.client.enabled', op='eq',
+                                val=True)
+        nodes = self.get_nodes_where_condition_match(c)
+        network_name = self.runtest_opts.get(
+            'convert_to_uuid', {}).get('public_network_id')
+        res = self.authenticated_openstack_module_call(
+            nodes[0], 'neutronng.list_netowkrs')[nodes[0]]['networks']
+        networks = [n['id'] for n in res if n['name'] == network_name]
+
+        if len(networks) != 1:
+            raise Exception("Error getting networks: {}".format(networks))
+
+        return networks[0]
 
     @property
     def public_router_id(self):

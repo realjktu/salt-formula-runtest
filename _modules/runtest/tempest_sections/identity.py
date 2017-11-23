@@ -1,6 +1,8 @@
 
 import base_section
 
+from runtest import conditions
+
 class Identity(base_section.BaseSection):
 
     name = "identity"
@@ -34,11 +36,13 @@ class Identity(base_section.BaseSection):
 
     @property
     def auth_version(self):
-        pass
+        return 'v3'
 
     @property
     def ca_certificates_file(self):
-        pass
+        c = conditions.BaseRule('keystone.server.enabled', 'eq', True)
+        return self.get_item_when_condition_match(
+            'keystone.server.cacert', c)
 
     @property
     def catalog_type(self):
@@ -54,15 +58,27 @@ class Identity(base_section.BaseSection):
 
     @property
     def region(self):
-        pass
+        c = conditions.BaseRule('keystone.server.enabled', 'eq', True)
+        return self.get_item_when_condition_match(
+            'keystone.server.region', c)
 
     @property
     def uri(self):
-        pass
+        c = conditions.BaseRule('keystone.server.enabled', 'eq', True)
+        vip = self.get_item_when_condition_match(
+            '_param.cluster_vip_address', c)
+        port = self.get_item_when_condition_match(
+            'keystone.server.bind.private_port', c)
+        return "http://{}:{}/v2.0".format(vip, port)
 
     @property
     def uri_v3(self):
-        pass
+        c = conditions.BaseRule('keystone.server.enabled', 'eq', True)
+        vip = self.get_item_when_condition_match(
+            '_param.cluster_vip_address', c)
+        port = self.get_item_when_condition_match(
+            'keystone.server.bind.private_port', c)
+        return "http://{}:{}/v3".format(vip, port)
 
     @property
     def user_lockout_duration(self):

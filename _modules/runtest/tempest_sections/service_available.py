@@ -9,8 +9,10 @@ class ServiceAvailable(base_section.BaseSection):
         'designate',
         'glance',
         'heat',
+        'ironic',
         'neutron',
         'nova',
+        'sahara',
         'swift',
     ]
 
@@ -29,7 +31,10 @@ class ServiceAvailable(base_section.BaseSection):
         for node, p in self.pillar.items():
             p_service = p.get(service)
             if p_service:
-                p_api = p_service.get('api') or p_service.get('controller')
+                p_api = (p_service.get('api') or
+                         p_service.get('controller') or
+                         p_service.get('server'))
+
                 if p_api:
                     if p_api.get('enabled'):
                         return True
@@ -52,12 +57,20 @@ class ServiceAvailable(base_section.BaseSection):
         return self._is_service_enabled('heat')
 
     @property
+    def ironic(self):
+        return self._is_service_enabled('ironic')
+
+    @property
     def neutron(self):
         return self._is_service_enabled('neutron')
 
     @property
     def nova(self):
         return self._is_service_enabled('nova')
+
+    @property
+    def sahara(self):
+        return self._is_service_enabled('sahara')
 
     @property
     def swift(self):

@@ -1,6 +1,8 @@
 
 import base_section
 
+from runtest import conditions
+
 class Auth(base_section.BaseSection):
 
     name = "auth"
@@ -23,15 +25,21 @@ class Auth(base_section.BaseSection):
 
     @property
     def admin_password(self):
-        pass
+        c = conditions.BaseRule('keystone.server.enabled', 'eq', True)
+        return self.get_item_when_condition_match(
+            'keystone.server.admin_password', c)
 
     @property
     def admin_project_name(self):
-        pass
+        c = conditions.BaseRule('keystone.server.enabled', 'eq', True)
+        return self.get_item_when_condition_match(
+            'keystone.server.admin_tenant', c)
 
     @property
     def admin_username(self):
-        pass
+        c = conditions.BaseRule('keystone.server.enabled', 'eq', True)
+        return self.get_item_when_condition_match(
+            'keystone.server.admin_name', c)
 
     @property
     def create_isolated_networks(self):

@@ -7,7 +7,7 @@ import logging
 
 import salt.pillar
 
-from tester import tempest_sections
+from runtest import tempest_sections
 
 log = logging.getLogger(__name__)
 
@@ -35,23 +35,26 @@ def _get_pillar_for_live_minions(timeout=5, gather_job_timeout=15):
 
     return pillars
 
-
 def generate_tempest_config(dst, *args, **kwargs):
 
     pillars = _get_pillar_for_live_minions()
-
+    this_node_pillar = __opts__['pillar']
+    runtest_opts =  this_node_pillar.get(__virtualname__, {}).get('tempest', {})
     config = {}
 
     for ts in tempest_sections.SECTIONS:
-        ts_inst = ts(pillars)
+        ts_inst = ts(pillars, runtest_opts)
         config[ts_inst.name] = {}
         opts = {}
         for opt in ts_inst.options:
             val = getattr(ts_inst, opt)
+            if val is None:
+                val = runtest_opts.get(ts_inst.name, {}).get(opt, None)
+
             if val is not None:
                 opts[opt] = val
 
-        config[ts(pillars).name] = opts
+        config[ts_inst.name] = opts
 
     data = jinja2.Environment().from_string(CFG_TEMPLATE).render(config=config)
     with open(dst, 'w') as cfg_file:

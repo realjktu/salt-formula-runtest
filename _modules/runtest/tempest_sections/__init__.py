@@ -5,6 +5,7 @@ import baremetal_feature_enabled
 import compute
 import compute_feature_enabled
 import debug
+import default
 import dns
 import dns_feature_enabled
 import heat_plugin
@@ -32,6 +33,7 @@ SECTIONS = [
     compute.Compute,
     compute_feature_enabled.ComputeFeatureEnabled,
     debug.Debug,
+    default.Default,
     dns.Dns,
     dns_feature_enabled.DnsFeatureEnabled,
     heat_plugin.HeatPlugin,

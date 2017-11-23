@@ -1,6 +1,8 @@
 
 import base_section
 
+from runtest import conditions
+
 class ComputeFeatureEnabled(base_section.BaseSection):
 
     name = "compute-feature-enabled"
@@ -86,7 +88,9 @@ class ComputeFeatureEnabled(base_section.BaseSection):
 
     @property
     def live_migration(self):
-        pass
+        return conditions.BaseRule('*.nova.compute.enabled', 'eq', True,
+                                   multiple='multiple').check(self.pillar)
+        
 
     @property
     def metadata_service(self):
@@ -114,7 +118,11 @@ class ComputeFeatureEnabled(base_section.BaseSection):
 
     @property
     def resize(self):
-        pass
+        # NOTE(vsaienko) allow_resize_to_same_host is hardcoded to True in
+        # nova formula, update when value is configurable.
+        res = conditions.BaseRule('*.nova.compute.enabled', 'eq', True,
+                            multiple='any').check(self.pillar)
+        return res
 
     @property
     def scheduler_available_filters(self):
