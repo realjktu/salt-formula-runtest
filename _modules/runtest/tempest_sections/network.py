@@ -86,6 +86,10 @@ class Network(base_section.BaseSection):
         nodes = self.get_nodes_where_condition_match(c)
         network_name = self.runtest_opts.get(
             'convert_to_uuid', {}).get('public_network_id')
+
+        if not network_name:
+          return
+
         res = self.authenticated_openstack_module_call(
             nodes[0], 'neutronng.list_netowkrs')[nodes[0]]['networks']
         networks = [n['id'] for n in res if n['name'] == network_name]

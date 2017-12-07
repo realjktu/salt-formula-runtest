@@ -1,7 +1,6 @@
 
-import base_section
-
 from runtest import conditions
+from runtest.tempest_sections import base_section
 
 class Auth(base_section.BaseSection):
 
